@@ -1,0 +1,7 @@
+From
+
+get-executionpolicy = Restricted
+
+To
+set-ExecutionPolicy -ExecutionPolicy Unrestricted
+

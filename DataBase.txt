@@ -1,0 +1,39 @@
+-- Database: WhatsWapp
+
+-- DROP DATABASE IF EXISTS "whatsapp";
+
+CREATE DATABASE "whatsapp"
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Portuguese_Brazil.1252'
+    LC_CTYPE = 'Portuguese_Brazil.1252'
+    LOCALE_PROVIDER = 'libc'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;
+	
+-- SCHEMA: chat
+
+-- DROP SCHEMA IF EXISTS chat ;
+
+CREATE SCHEMA IF NOT EXISTS chat
+    AUTHORIZATION postgres;	
+	
+-- Table: chat.message
+
+-- DROP TABLE IF EXISTS chat.message;
+
+CREATE TABLE IF NOT EXISTS chat.message
+(
+    id character varying(50) COLLATE pg_catalog."default",
+    author character varying(50) COLLATE pg_catalog."default",
+    "from" character varying(50) COLLATE pg_catalog."default",
+    body text COLLATE pg_catalog."default"
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS chat.message
+    OWNER to postgres;	
+	
