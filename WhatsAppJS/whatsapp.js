@@ -1,8 +1,11 @@
 const wwebVersion = '2.2412.54';
 
-const qrCode = require('qrcode-terminal');
+//const qrCode = require('qrcode-terminal');
 
 const { Client, LocalAuth } = require('whatsapp-web.js');
+
+const database = require("./dao/database");
+
 
 const client = new Client({
     authStrategy: new LocalAuth(),
@@ -18,16 +21,19 @@ client.on('qr', (qr) => {
 });
 
 client.on('ready', () => {
-    console.log('Client is ready!');
+    console.log('WhatsApp Client On line!');
 });
 
 client.on('message', msg => {
     //contact = msg.getContact();
-    //contact.
+    
+    //if (msg.body == '!ping') {
+    //    msg.reply('pong');
+    //}
 
-    if (msg.id.id body == '!ping') {
-        msg.reply('pong');
-    }
+    database.insertChat(msg);
+    msg.reply('Olá, aqui é o CATO, sua mensagem foi salva com sucesso.');
+
 });
 
 client.initialize();

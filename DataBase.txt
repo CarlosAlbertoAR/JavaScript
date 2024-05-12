@@ -1,3 +1,5 @@
+https://www.luiztools.com.br/post/como-usar-nodejs-postgresql/
+
 -- Database: WhatsWapp
 
 -- DROP DATABASE IF EXISTS "whatsapp";
@@ -20,17 +22,20 @@ CREATE DATABASE "whatsapp"
 CREATE SCHEMA IF NOT EXISTS chat
     AUTHORIZATION postgres;	
 	
--- Table: chat.message
+-- Table: chat.inbox
 
--- DROP TABLE IF EXISTS chat.message;
+-- DROP TABLE IF EXISTS chat.inbox;
 
-CREATE TABLE IF NOT EXISTS chat.message
+CREATE TABLE IF NOT EXISTS chat.inbox
 (
-    id character varying(50) COLLATE pg_catalog."default",
+    id character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    date timestamp with time zone,
     author character varying(50) COLLATE pg_catalog."default",
     "from" character varying(50) COLLATE pg_catalog."default",
-    body text COLLATE pg_catalog."default"
+    body text COLLATE pg_catalog."default",
+    CONSTRAINT inbox_pkey PRIMARY KEY (id)
 )
+
 
 TABLESPACE pg_default;
 
